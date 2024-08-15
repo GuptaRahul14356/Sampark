@@ -1,4 +1,6 @@
-const getAllYouths = () => {};
+const getAllYouths = () => {
+  
+};
 
 module.exports = {
   getAllYouths,

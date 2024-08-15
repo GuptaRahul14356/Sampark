@@ -36,12 +36,19 @@ const login = async (req, res) => {
   }
 };
 
-const logout = () => {};
-
-const signup = () => {};
+const register = async (req, res) => {
+  const UserModel = new userModel(req.body);
+  userModel.password = await bcrypt.hash(req.body.password, 10);
+  try {
+    const response = await UserModel.save();
+    response.password = undefined;
+    return res.status(201).json({ message: " Success ", data: response });
+  } catch (err) {
+    return res.status(500).json({ message: " Error", err });
+  }
+};
 
 module.exports = {
   login,
-  logout,
-  signup,
+  register,
 };
