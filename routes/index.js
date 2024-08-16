@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.use("/user", userRoutes);
 app.use("/youth", youthRoutes);
-// app.use("/sabha", userRoutes);
+app.use("/sabha", userRoutes);
 // app.use("/attendance", userRoutes);
 
 module.exports = app;

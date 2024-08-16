@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const { types } = require("joi");
-const schema = mongoose.schema;
 
 //Schema
 const userSchema = new mongoose.Schema({
@@ -68,5 +66,5 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-const userModel = mongoose.model("youth", userSchema);
-module.exports = userModel;
+const youthModel = mongoose.model("youth", userSchema);
+module.exports = youthModel;
