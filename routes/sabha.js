@@ -1,18 +1,10 @@
 const express = require("express");
-const { connectMongoDb } = require("../db/mongo.js");
-const {
-  handleGetSabhaUserById,
-  handleUpdateSabhaUserById,
-  handleDeleteSabhaUserById,
-  handleCreateSabhaNewUser,
-} = require("../controllers/dump");
 const router = express.Router();
+const sabhaController = require("../controllers/sabha");
 
-router
-  .route("/api/users/:id")
-  .get(handleGetSabhaUserById)
-  .patch(handleUpdateSabhaUserById)
-  .delete(handleDeleteSabhaUserById);
-router.post("/api/users", handleCreateSabhaNewUser);
+router.get("/user",sabhaController.handleGetSabhaUserById);
+router.put("/:id", sabhaController.handleUpdateSabhaUserById);
+router.delete("/:id", sabhaController.handleDeleteSabhaUserById);
+router.post("/", sabhaController.handleCreateSabhaNewUser);
 
 module.exports = router;

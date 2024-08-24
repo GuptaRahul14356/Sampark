@@ -1,31 +1,30 @@
-const youthModel =require("../model/youth")
+const youthModel = require("../model/youth");
 
-async function handleGetSamparkUserById(req, res) {
-  const id = Number(req.params.id);
-  const user = user.find((user) => user.id === id);
-  if (!user) return res.status(404).json({ error: " user not found!" });
-  return res.json(user);
+async function handleGetYouthAllUsersName(req, res) {
+  const html = `
+  <ul>
+  ${users.map((youth) => `<li>${youth.first_name}</li>`).join("")}
+  </ul>
+  `;
+  res.send(html);
 }
 
-async function handleUpdateSamparkUserById(req, res) {
-  const users = req.params.user;
-  const changes = req.body;
-  const originalInformation =
-    bancoDeDados.retriverOriginalIinformationInMatrix(users);
-
-  let modifiedInFormation = originalInformation;
-  if (changes.painted !== undefined) {
-    modifiedInFormation.painted = true;
-  }
-  res.send(modifiedInFormation);
+async function handleGetYouthUserById(req, res) {
+  const youth = await youthModel.find();
+  if (!youth) return res.status(404).json({ error: " user not found!" });
+  return res.json(youth);
 }
 
-async function HandleDeteleSamparkUserId(req, res) {
+async function handleUpdateYouthkUserById(req, res) {
+  console.log("pandding");
+}
+
+async function HandleDeteleYouthUserId(req, res) {
   try {
-    const userid = req.params.id.toString().trim();
-    const deleteusers = await user.findByIdAndDelete(userid);
+    const youthid = req.params.id.toString().trim();
+    const deleteyouth = await youthModel.findByIdAndDelete(youthid);
 
-    if (!deleteusers) {
+    if (!deleteyouth) {
       return res.status(404).json({ message: "data not found" });
     }
     res.json({ message: "data deleted successfully" });
@@ -34,7 +33,7 @@ async function HandleDeteleSamparkUserId(req, res) {
   }
 }
 
-async function HandleCreateSamparkNewUser(req, res) {
+async function HandleCreateYouthNewUser(req, res) {
   const body = req.body;
   if (
     !body ||
@@ -61,7 +60,7 @@ async function HandleCreateSamparkNewUser(req, res) {
     return res.status(400).json({ msg: "All fields are req..." });
   }
   console.log("body", body);
-  const result = await user.create({
+  const result = await youthModel.create({
     firstName: body.first_name,
     middleNmae: body.middle_name,
     lastNmae: body.last_name,
@@ -87,8 +86,9 @@ async function HandleCreateSamparkNewUser(req, res) {
 }
 
 module.exports = {
-  handleGetSamparkUserById,
-  handleUpdateSamparkUserById,
-  HandleDeteleSamparkUserId,
-  HandleCreateSamparkNewUser,
+  handleGetYouthAllUsersName,
+  handleGetYouthUserById,
+  handleUpdateYouthkUserById,
+  HandleDeteleYouthUserId,
+  HandleCreateYouthNewUser,
 };

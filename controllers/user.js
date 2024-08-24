@@ -10,7 +10,7 @@ const login = async (req, res) => {
         message: "Authentication failed, Invalid username/password",
       });
     }
-    const isPassEqual = bcrypt.compare(req.body.password, user.password);
+    const isPassEqual = await bcrypt.compare(req.body.password, user.password);
     if (!isPassEqual) {
       return res.status(401).json({
         message: "Authentication failed, Invalid username/password",
@@ -37,11 +37,14 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
-  const UserModel = new userModel(req.body);
-  userModel.password = await bcrypt.hash(req.body.password, 10);
+  const hashedPassword = await bcrypt.hash(req.body.password, 10);
+  const user = req.body;
+  user.password = hashedPassword;
+  console.log("hashedPassword", hashedPassword);
+
+  const UserModel = new userModel(user);
   try {
     const response = await UserModel.save();
-    response.password = undefined;
     return res.status(201).json({ message: " Success ", data: response });
   } catch (err) {
     return res.status(500).json({ message: " Error", err });
