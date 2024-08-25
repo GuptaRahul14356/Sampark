@@ -2,9 +2,9 @@ const sabhaModel = require("../model/sabha");
 
 async function handleGetSabhaUserById(req, res) {
   const id = Number(req.params.id);
-  const guest = sabha.find((guest) => guest.id === id);
-  if (!guest) return res.status(404).json({ error: "User not found!" });
-  return res.json(guest);
+  const sabha = sabhaModel.find((sabha) => sabha.id === id);
+  if (!sabha) return res.status(404).json({ error: "User not found!" });
+  return res.json(sabha);
 }
 async function handleUpdateSabhaUserById(req, res) {
   console.log("panding");
@@ -13,7 +13,7 @@ async function handleUpdateSabhaUserById(req, res) {
 async function handleDeleteSabhaUserById(req, res) {
   try {
     const guestid = req.params.id.toString().trim();
-    const deleteguests = await sabha.findByIdAndDelete(guestid);
+    const deleteguests = await sabhaModel.findByIdAndDelete(guestid);
 
     if (!deleteguests) {
       return res.status(404).json({ message: "Data not found" });

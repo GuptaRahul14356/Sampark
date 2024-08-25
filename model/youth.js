@@ -16,21 +16,21 @@ const userSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  dateofbirth: {
+  dateOfBirth: {
     type: Date,
     required: true,
   },
-  addressline1: {
+  addressLine1: {
     type: String,
   },
-  addressline2: {
+  addressLine2: {
     type: String,
   },
-  gender: {
+  Gender: {
     type: String,
     required: true,
   },
-  education: {
+  Education: {
     type: String,
   },
   educationSpecification: {
@@ -42,22 +42,22 @@ const userSchema = new mongoose.Schema({
   referenceBy: {
     type: String,
   },
-  folloeUpBy: {
+  followUpBy: {
     type: String,
   },
   isSabhaAttending: {
     type: String,
   },
-  sabhaID: {
+  sabhaId: {
     type: Number,
   },
-  updateby: {
+  updateBy: {
     type: String,
   },
   updateAt: {
     type: Date,
   },
-  createdBy: {
+  createBy: {
     type: String,
   },
   createAt: {

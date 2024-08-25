@@ -37,49 +37,49 @@ async function HandleCreateYouthNewUser(req, res) {
   const body = req.body;
   if (
     !body ||
-    !body.first_name ||
-    !body.middle_name ||
-    !body.last_name ||
-    !body.Mobile_Number ||
-    !body.date_of_birth ||
-    !body.address_line_1 ||
-    !body.address_line_2 ||
-    !body.gender ||
-    !body.education ||
-    !body.education_Specification ||
-    !body.education_Status ||
-    !body.reference_by ||
-    !body.folloe_Up_By ||
-    !body.is_Sabha_Attending ||
-    !body.sabha_id ||
-    !body.update_By ||
-    !body.update_At ||
-    !body.create_By ||
-    !body.create_At
+    !body.firstName ||
+    !body.middleName ||
+    !body.lastName ||
+    !body.mobileNumber ||
+    !body.dateOfBirth ||
+    !body.addressLine1 ||
+    !body.addressLine2 ||
+    !body.Gender ||
+    !body.Education ||
+    !body.educationSpecification ||
+    !body.educationStatus ||
+    !body.referenceBy ||
+    !body.followUpBy ||
+    !body.isSabhaAttending ||
+    !body.sabhaId ||
+    !body.updateBy ||
+    !body.updateAt ||
+    !body.createBy ||
+    !body.createAt
   ) {
     return res.status(400).json({ msg: "All fields are req..." });
   }
   console.log("body", body);
   const result = await youthModel.create({
-    firstName: body.first_name,
-    middleNmae: body.middle_name,
-    lastNmae: body.last_name,
-    mobileNumber: body.Mobile_Number,
-    dateofbirth: new Date(body.date_of_birth),
-    addressline1: body.address_line_1,
-    addressline2: body.address_line_2,
-    gender: body.gender,
-    education: body.education,
-    educationSpecification: body.education_Specification,
-    educationStatus: body.education_Status,
-    referenceBy: body.reference_by,
-    folloeUpBy: body.folloe_Up_By,
+    firstName: body.firstName,
+    middleName: body.middleName,
+    lastName: body.lastName,
+    mobileNumber: body.mobileNumber,
+    dateOfBirth: new Date(body.dateOfBirth),
+    addressLine1: body.addressLine1,
+    addressLine2: body.addressLine2,
+    Gender: body.Gender,
+    Education: body.Education,
+    educationSpecification: body.educationSpecification,
+    educationStatus: body.educationStatus,
+    referenceBy: body.referenceBy,
+    followUpBy: body.followUpBy,
     isSabhaAttending: body.isSabhaAttending,
-    sabhaID: body.sabha_id,
-    updateby: body.update_By,
-    updateAt: body.update_At,
-    createby: body.create_By,
-    createAt: body.create_At,
+    sabhaId: body.sabhaId,
+    updateBy: body.updateBy,
+    updateAt: body.updateAt,
+    createBy: body.createBy,
+    createAt: body.createAt,
   });
 
   res.send({ msg: "successfully enterd", id: result._id });
