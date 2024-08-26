@@ -16,7 +16,42 @@ async function handleGetYouthUserById(req, res) {
 }
 
 async function handleUpdateYouthkUserById(req, res) {
-  console.log("pandding");
+  const body = await youthModel
+    .findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          firstName: req.body.firstName,
+          middleName: req.body.middleName,
+          lastName: req.body.lastName,
+          mobileNumber: req.body.mobileNumber,
+          dateOfBirth: new Date(req.body.dateOfBirth),
+          addressLine1: req.body.addressLine1,
+          addressLine2: req.body.addressLine2,
+          Gender: req.body.Gender,
+          Education: req.body.Education,
+          educationSpecification: req.body.educationSpecification,
+          educationStatus: req.body.educationStatus,
+          referenceBy: req.body.referenceBy,
+          followUpBy: req.body.followUpBy,
+          isSabhaAttending: req.body.isSabhaAttending,
+          sabhaId: req.body.sabhaId,
+          updateBy: req.body.updateBy,
+          updateAt: req.body.updateAt,
+          createBy: req.body.createBy,
+          createAt: req.body.createAt,
+        },
+      }
+    )
+    .then((result) => {
+      res.send({ msg: " Data update successfully", result });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        Error: "bad requiest",
+      });
+    });
 }
 
 async function HandleDeteleYouthUserId(req, res) {

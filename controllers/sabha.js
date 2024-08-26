@@ -7,7 +7,30 @@ async function handleGetSabhaUserById(req, res) {
   return res.json(sabha);
 }
 async function handleUpdateSabhaUserById(req, res) {
-  console.log("panding");
+  const body = await sabhaModel
+    .findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: {
+          Name: req.body.Name,
+          addressLine1: req.body.addressLine1,
+          addressLine2: req.body.addressLine2,
+          Country: req.body.Country,
+          pinCode: req.body.pinCode,
+          sabhaType: req.body.sabhaType,
+          Leader: req.body.Leader,
+        },
+      }
+    )
+    .then((result) => {
+      res.send({ msg: " Data update successfully", result });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        Error: "bad requiest",
+      });
+    });
 }
 
 async function handleDeleteSabhaUserById(req, res) {
