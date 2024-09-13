@@ -51,7 +51,10 @@ const register = async (req, res) => {
   }
 };
 
+getUsers = async (req, res) => {};
+
 module.exports = {
   login,
   register,
+  getUsers,
 };
