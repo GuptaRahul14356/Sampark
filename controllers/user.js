@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const userModel = require("../model/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -51,7 +53,14 @@ const register = async (req, res) => {
   }
 };
 
-getUsers = async (req, res) => {};
+getUsers = async (req, res) => {
+  try {
+    const users = await userModel.find(); // Fetch all users
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching users", error: err });
+  }
+};
 
 module.exports = {
   login,

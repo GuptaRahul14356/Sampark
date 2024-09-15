@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const http = require("http");
 const connectDB = require("./db/mongo");
 const app = require("./routes/index");

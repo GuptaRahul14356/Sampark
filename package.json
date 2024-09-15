@@ -18,5 +18,10 @@
     "start": "nodemon index"
   },
   "author": "Rahul Gupta",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.10.0",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0"
+  }
 }

@@ -6,8 +6,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use("/user", userRoutes);
-app.use("/youth", youthRoutes);
+app.use("/users", userRoutes);
+app.use("/youths", youthRoutes);
 app.use("/sabha", guestRoutes);
 
 module.exports = app;
